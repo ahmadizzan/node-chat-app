@@ -19,22 +19,9 @@ io.on('connection', (socket) => {
 
    socket.broadcast.emit('newMessage', generateMessage('Admin', 'A new user has joined'));
 
-   // socket.emit('newEmail', {
-   //    from: 'izzan@imel.com',
-   //    text: 'test ting',
-   //    createAt: 123
-   // });
-   // socket.on('createEmail', (newEmail) => {
-   //    console.log('create email', newEmail);
-   // });
-
-   // socket.emit('newMessage', {
-   //    text: 'babababaaaba',
-   //    createdAt: 121212
-   // });
-
-   socket.on('createMessage', (message) => {
+   socket.on('createMessage', (message, callback) => {
       io.emit('newMessage', generateMessage(message.from, message.text));
+      callback('This will be passed into the client callback function');
    });
 
    socket.on('disconnect', () => {
