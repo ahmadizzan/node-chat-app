@@ -16,8 +16,29 @@ function scrollToBottom () {
    }
 }
 
+socket.on('updateUserList', function (users) {
+   console.log('Users list', users);
+   var ol = $('<ol></ol>');
+
+   users.forEach(function (user) {
+      ol.append($('<li></li>').text(user));
+   });
+
+   $('#users').html(ol);
+});
+
 socket.on('connect', function () {
    console.log('Connected to server');
+
+   var params = $.deparam(window.location.search);
+   socket.emit('join', params, (err) => {
+      if(err){
+         alert(err);
+         window.location.href = '/';
+      } else {
+         console.log('yaas');
+      }
+   });
 });
 
 socket.on('disconnect', function () {
