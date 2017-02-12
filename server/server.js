@@ -19,8 +19,8 @@ io.on('connection', (socket) => {
    console.log('New user connected');
 
    socket.on('join', (params, callback) => {
-      if(!isRealString(params.name) || !isRealString(params.room)){
-         return callback('Name and room name are required');
+      if(!isRealString(params.name) || !isRealString(params.room) || !(params.room === 'test314')){
+         return callback('Input invalid / no permission');
       }
 
       socket.join(params.room);
