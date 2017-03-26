@@ -10,14 +10,6 @@
 <body>
    <div class="centered-form">
       <div class="centered-form__form">
-
-         <!--- EXPERIMENTAL FEATURE-->
-
-         <button>Generate room</button>
-
-         <!--
-
-
          <form action="/chat.html">
             <div class="form-field">
                <h3>Join a Chat</h3>
@@ -34,22 +26,7 @@
                <button>Join</button>
             </div>
          </form>
-      -->
       </div>
    </div>
-
-   <script src="/js/libs/jquery-3.1.1.min.js"></script>
-   <script>
-         var rand = function() {
-             return Math.random().toString(36).substr(2);
-         };
-         var token = function() {
-             return rand() + rand(); // to make it longer
-         };
-         var tken = token();
-         $('button').click(function() {
-            document.location.href = `http://localhost:3000//name.html?room=${tken}`;
-         });
-   </script>
 </body>
 </html>

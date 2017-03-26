@@ -31,8 +31,6 @@ socket.on('connect', function () {
    console.log('Connected to server');
 
    var params = $.deparam(window.location.search);
-   //$('#group-name').text(params.room);
-
    socket.emit('join', params, (err) => {
       if(err){
          alert(err);
